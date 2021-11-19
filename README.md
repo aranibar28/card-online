@@ -10,22 +10,22 @@ Clonar repositorio
 
 ## Flujo de trabajo de desarrollo Backend
 
-```json
+```bash
 virtualenv env
-source env/bin/activate
+source env/Scripts/activate
 pip install -r requirements.txt
 python manage.py runserver
 ```
 
 ## Flujo de trabajo de desarrollo Frontend
 
-```json
+```bash
 npm i
 npm start
 ```
 
 ## For deploying
 
-```json
+```bash
 npm run build
 ```
