@@ -4,11 +4,11 @@ Sistema de Pedidos Online
 
 ## Instalación 
 
-Clonar repositorio
+### Clonar Repositorio
 
     git clone https://github.com/aranibar28/card-online.git
 
-## Flujo de trabajo de desarrollo Backend
+### Flujo de trabajo de desarrollo Backend
 
 ```bash
 virtualenv env
@@ -17,14 +17,14 @@ pip install -r requirements.txt
 python manage.py runserver
 ```
 
-## Flujo de trabajo de desarrollo Frontend
+### Flujo de trabajo de desarrollo Frontend
 
 ```bash
 npm i
 npm start
 ```
 
-## For deploying
+### Para el deploying
 
 ```bash
 npm run build
