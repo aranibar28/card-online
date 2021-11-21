@@ -9,18 +9,25 @@ import { ModalBasic } from "../../components/Common";
 import { useUser } from "../../hooks";
 
 export function UsersAdmin() {
-  const { loading, users, getUser } = useUser();
   const [showModal, setShowModal] = useState(false);
   const [titleModal, setTitleModal] = useState(null);
   const [contentModal, setContentModal] = useState(null);
+  const [refetch, setRefetch] = useState(false);
+  const { loading, users, getUser } = useUser();
 
-  useEffect(() => getUser(), []);
+  useEffect(() => {
+    getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refetch]);
 
   const openCloseModal = () => setShowModal((prev) => !prev);
+  const onRefetch = () => setRefetch((prev) => !prev);
 
   const addUser = () => {
     setTitleModal("Nuebo Usuario");
-    setContentModal(<AddEditUserForm />);
+    setContentModal(
+      <AddEditUserForm onClose={openCloseModal} onRefetch={onRefetch} />
+    );
     openCloseModal();
   };
 
