@@ -23,13 +23,12 @@ export function AuthProvider(props) {
         setAuth(null);
       }
     })();
-  }, [getMe]);
+  });
 
   const login = async (token) => {
     setToken(token);
     const me = await getMe(token);
     setAuth({ token, me });
-    console.log(me);
   };
 
   const logout = () => {
