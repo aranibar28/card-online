@@ -13,7 +13,7 @@ export function UsersAdmin() {
   const [titleModal, setTitleModal] = useState(null);
   const [contentModal, setContentModal] = useState(null);
   const [refetch, setRefetch] = useState(false);
-  const { loading, users, getUser } = useUser();
+  const { loading, users, getUser, deleteUser } = useUser();
 
   useEffect(() => {
     getUser();
@@ -24,11 +24,35 @@ export function UsersAdmin() {
   const onRefetch = () => setRefetch((prev) => !prev);
 
   const addUser = () => {
-    setTitleModal("Nuebo Usuario");
+    setTitleModal("Registrar Usuario");
     setContentModal(
       <AddEditUserForm onClose={openCloseModal} onRefetch={onRefetch} />
     );
     openCloseModal();
+  };
+
+  const updateUser = (data) => {
+    setTitleModal("Actualizar usuario");
+    setContentModal(
+      <AddEditUserForm
+        onClose={openCloseModal}
+        onRefetch={onRefetch}
+        user={data}
+      />
+    );
+    openCloseModal();
+  };
+
+  const onDeleteUser = async (data) => {
+    const result = window.confirm(`¿Eliminar usuario ${data.email} ?`);
+    if (result) {
+      try {
+        await deleteUser(data.id);
+        onRefetch();
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
 
   return (
@@ -43,7 +67,11 @@ export function UsersAdmin() {
           Cargando...
         </Loader>
       ) : (
-        <TableUsers users={users} />
+        <TableUsers
+          users={users}
+          updateUser={updateUser}
+          onDeleteUser={onDeleteUser}
+        />
       )}
       <ModalBasic
         show={showModal}
