@@ -25,6 +25,18 @@ export function CategoriesAdmin() {
     openCloseModal();
   };
 
+  const updateCategory = (data) => {
+    setTitleModal("Actualizar Categoría");
+    setContentModal(
+      <AddEditCategoryForm
+        onClose={openCloseModal}
+        onRefetch={onRefetch}
+        category={data}
+      />
+    );
+    openCloseModal();
+  };
+
   useEffect(() => {
     getCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -42,7 +54,10 @@ export function CategoriesAdmin() {
           Cargando...
         </Loader>
       ) : (
-        <TableCategoryAdmin categories={categories} />
+        <TableCategoryAdmin
+          categories={categories}
+          updateCategory={updateCategory}
+        />
       )}
       <ModalBasic
         show={showModal}
