@@ -13,7 +13,7 @@ export function CategoriesAdmin() {
   const [titleModal, setTitleModal] = useState(null);
   const [contentModal, setContentModal] = useState(null);
   const [refetch, setRefetch] = useState(false);
-  const { loading, categories, getCategories } = useCategory();
+  const { loading, categories, getCategories, deleteCategory } = useCategory();
   const openCloseModal = () => setShowModal((prev) => !prev);
   const onRefetch = () => setRefetch((prev) => !prev);
 
@@ -37,6 +37,14 @@ export function CategoriesAdmin() {
     openCloseModal();
   };
 
+  const onDeleteCategory = async (data) => {
+    const result = window.confirm(`Elminar cateogria ${data.title}?`);
+    if (result) {
+      await deleteCategory(data.id);
+      onRefetch();
+    }
+  };
+
   useEffect(() => {
     getCategories();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,6 +65,7 @@ export function CategoriesAdmin() {
         <TableCategoryAdmin
           categories={categories}
           updateCategory={updateCategory}
+          deleteCategory={onDeleteCategory}
         />
       )}
       <ModalBasic
