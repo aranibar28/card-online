@@ -10,7 +10,7 @@ export function OrdersAdmin() {
     // eslint-disable-next-line
     []
   );
-  console.log(tables);
+ 
   return (
     <>
       <HeaderPage title="Restaurante" />
