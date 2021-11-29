@@ -1,13 +1,21 @@
 import React from "react";
-import { Image } from "semantic-ui-react";
+import { Image, Button } from "semantic-ui-react";
 import classNames from "classnames";
 import moment from "moment";
+import { useOrder } from "../../../../hooks/useOrder";
+import { ORDER_STATUS } from "../../../../utils/constants";
 import "moment/locale/es";
 import "./OrderItemAdmin.scss";
 
 export function OrderItemAdmin(props) {
-  const { order } = props;
+  const { order, onReloadOrders } = props;
   const { title, image } = order.product_data;
+  const { checkDeliveredOrder } = useOrder();
+
+  const onCheckDeliveredOrder = async () => {
+    await checkDeliveredOrder(order.id);
+    onReloadOrders();
+  };
 
   return (
     <div
@@ -24,6 +32,11 @@ export function OrderItemAdmin(props) {
         <Image src={image} />
         <p>{title}</p>
       </div>
+      {order.status === ORDER_STATUS.PENDING && (
+        <Button primary onClick={onCheckDeliveredOrder}>
+          Marcar Entregado
+        </Button>
+      )}
     </div>
   );
 }
