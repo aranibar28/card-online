@@ -3,10 +3,14 @@ import {
   createPaymentApi,
   getPaymentByTableApi,
   closePaymentApi,
+  getPaymentsApi,
 } from "../api/payment";
 
 export function usePayment() {
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [payments, setPayments] = useState(null);
+
   const createPayment = async (paymentData) => {
     try {
       return await createPaymentApi(paymentData);
@@ -31,10 +35,25 @@ export function usePayment() {
     }
   };
 
+  const getPayments = async () => {
+    try {
+      setLoading(true);
+      const response = await getPaymentsApi();
+      setLoading(false);
+      setPayments(response);
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+    }
+  };
+
   return {
     error,
+    loading,
+    payments,
     createPayment,
     getPaymentByTable,
     closePayment,
+    getPayments,
   };
 }
