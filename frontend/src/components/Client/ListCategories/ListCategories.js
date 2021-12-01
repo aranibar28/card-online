@@ -8,8 +8,7 @@ export function ListCategories(props) {
   const { categories } = props;
   const location = useLocation();
   const history = useHistory();
-  console.log(location);
-
+  
   const goToCategory = (id) => {
     history.push(`${location.pathname}/${id}`);
   };

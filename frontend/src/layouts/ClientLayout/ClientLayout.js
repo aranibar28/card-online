@@ -27,7 +27,7 @@ export function ClientLayout(props) {
   };
 
   const goToOrder = () => {
-    history.push(`/client/${tableNumber}/order`);
+    history.push(`/client/${tableNumber}/orders`);
   };
 
   return (
@@ -35,7 +35,7 @@ export function ClientLayout(props) {
       <Container className="client-layout">
         <div className="client-layout__header">
           <Link to={`/client/${tableNumber}`}>
-            <h1>iCARD</h1>
+            <h2>El Anzuelo</h2>
           </Link>
           <span>Mesa {tableNumber}</span>
           <div>
