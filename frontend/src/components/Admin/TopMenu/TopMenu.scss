@@ -1,6 +1,12 @@
 .top-menu-admin {
   &__logo {
     width: 250px;
+    display: flex;
+    justify-content: center;
+
+    .image {
+      width: 100px;
+    }
   }
 
   i.icon {
