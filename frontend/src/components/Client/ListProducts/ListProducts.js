@@ -16,13 +16,17 @@ export function ListProducts(props) {
     <div className="list-products-client">
       {map(products, (product) => (
         <div key={product.id} className="list-products-client__product">
-          <div>
-            <Image src={product.image} />
-            <span>{product.title}</span>
+          <div className="list-products-client__product-title">
+            <h4>{product.title}</h4>
+            <p>{product.description}</p>
+            <Button primary icon onClick={() => addCart(product)}>
+              Agregar <Icon name="add" />
+            </Button>
+            <span>S/. {product.price}</span>
           </div>
-          <Button primary icon onClick={() => addCart(product)}>
-            <Icon name="add" />
-          </Button>
+          <div className="list-products-client__product-image">
+            <Image src={product.image} />
+          </div>
         </div>
       ))}
     </div>

@@ -13,7 +13,7 @@ export function TableProductAdmin(props) {
           <Table.HeaderCell>Imagen</Table.HeaderCell>
           <Table.HeaderCell>Producto</Table.HeaderCell>
           <Table.HeaderCell>Precio</Table.HeaderCell>
-          <Table.HeaderCell>Categoria</Table.HeaderCell>
+          <Table.HeaderCell>Categoría</Table.HeaderCell>
           <Table.HeaderCell>Activo</Table.HeaderCell>
           <Table.HeaderCell></Table.HeaderCell>
         </Table.Row>

@@ -5,6 +5,7 @@ import { map, size, forEach } from "lodash";
 import { OrderHistoryItem } from "../../components/Client";
 import { ModalConfirm } from "../../components/Common";
 import { useOrder, useTable, usePayment } from "../../hooks";
+import classNames from "classnames";
 
 export function OrdersHistory() {
   const [idTable, setIdTable] = useState(null);
@@ -58,14 +59,16 @@ export function OrdersHistory() {
 
   return (
     <div>
-      <h1>Historial de Pedidos</h1>
+      <h3>Historial de Pedidos</h3>
       {loading ? (
         <p>Cargando...</p>
       ) : (
         <>
           {size(orders) > 0 && (
             <Button
-              primary
+              className={classNames("primary", {
+                [size(isRequestAccount) > 0]: true,
+              })}
               fluid
               onClick={() =>
                 size(isRequestAccount) === 0 && setShowTypePayment(true)
@@ -73,7 +76,7 @@ export function OrdersHistory() {
             >
               {size(isRequestAccount) > 0
                 ? "La cuenta ya esta pedida"
-                : "Pedir la cuenta"}
+                : "Pedir la Cuenta"}
             </Button>
           )}
           {map(orders, (order) => (

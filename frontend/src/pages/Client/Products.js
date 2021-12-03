@@ -14,7 +14,17 @@ export function Products() {
 
   return (
     <div>
-      <Link to={`/client/${tableNumber}`}> Volver a categorias</Link>
+      <Link
+        to={`/client/${tableNumber}`}
+        style={{
+          display: "block",
+          textAlign: "right",
+          color: "#f44b03",
+          marginRight: "8px",
+        }}
+      >
+        Volver a Categorias
+      </Link>
       {loading ? <p>Cargando...</p> : <ListProducts products={products} />}
     </div>
   );

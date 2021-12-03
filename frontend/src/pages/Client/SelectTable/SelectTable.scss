@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   background-color: #2a2a72;
-  background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+  background: linear-gradient(to left, #f44b03, red);
   padding: 0 20px;
 
   &__content {
@@ -19,20 +19,22 @@
     align-items: center;
     text-align: center;
 
-    > h1 {
-      font-size: 25px;
-      margin-bottom: 10px;
-    }
-
     > h2 {
       font-size: 18px;
       font-weight: normal;
       margin: 0px;
     }
+
+    .ui.image {
+      width: 70%;
+      margin: 20px 0;
+    }
+
     .ui.form {
       width: 100%;
-      margin: 30px;
+      margin: 20px;
     }
+
     &-error {
       margin-top: 10px;
       color: red;

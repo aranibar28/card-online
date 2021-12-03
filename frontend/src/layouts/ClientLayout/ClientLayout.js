@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, Button, Icon } from "semantic-ui-react";
+import { Container, Button, Icon, Image } from "semantic-ui-react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useTable } from "../../hooks";
 import "./ClientLayout.scss";
@@ -35,7 +35,7 @@ export function ClientLayout(props) {
       <Container className="client-layout">
         <div className="client-layout__header">
           <Link to={`/client/${tableNumber}`}>
-            <h2>El Anzuelo</h2>
+            <Image src="https://images.tcdn.com.br/img/img_prod/744994/1580692110_logo_horizontal_sem_fundo.png" />
           </Link>
           <span>Mesa {tableNumber}</span>
           <div>

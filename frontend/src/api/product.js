@@ -16,6 +16,7 @@ export async function addProductApi(data, token) {
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("price", data.price);
+    formData.append("description", data.description);
     formData.append("category", data.category);
     formData.append("active", data.active);
     formData.append("image", data.image);
@@ -40,6 +41,7 @@ export async function updateProductApi(id, data, token) {
     const formData = new FormData();
     formData.append("title", data.title);
     formData.append("price", data.price);
+    formData.append("description", data.description);
     formData.append("category", data.category);
     formData.append("active", data.active);
     if (data.image) formData.append("image", data.image);

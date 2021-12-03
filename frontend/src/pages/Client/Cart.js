@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Icon } from "semantic-ui-react";
 import { Link, useParams } from "react-router-dom";
 import { size } from "lodash";
 import { useProduct } from "../../hooks";
@@ -29,14 +29,26 @@ export function Cart() {
 
   return (
     <div>
-      <h1>Carrito</h1>
+      <h3>Carrito</h3>
       {!products ? (
         <p>Cargando...</p>
       ) : size(products) === 0 ? (
         <div style={{ textAlign: "center" }}>
           <p>Tu carrito esta vacío</p>
-          <Link to={`/client/${tableNumber}/orders`}>
-            <Button primary>Ver pedidos</Button>
+          <div>
+            <Icon
+              name="cart arrow down"
+              style={{
+                color: "gray",
+                fontSize: "50px",
+                padding: "20px 0",
+              }}
+            />
+          </div>
+          <Link to={`/client/${tableNumber}`}>
+            <Button primary style={{ margin: "20px 0" }}>
+              Seguir buscando
+            </Button>
           </Link>
         </div>
       ) : (

@@ -22,16 +22,18 @@ export function OrderHistoryItem(props) {
         </span>
       </div>
 
-      <div className="order-history-item__product">
+      <div className="order-history-item__image">
         <Image src={image} />
-        <p>{title}</p>
       </div>
 
-      {order.status === ORDER_STATUS.PENDING ? (
-        <span>En marcha</span>
-      ) : (
-        <span>Entregado</span>
-      )}
+      <div className="order-history-item__product">
+        <p>{title}</p>
+        {order.status === ORDER_STATUS.PENDING ? (
+          <span>En marcha</span>
+        ) : (
+          <span>Entregado</span>
+        )}
+      </div>
     </div>
   );
 }

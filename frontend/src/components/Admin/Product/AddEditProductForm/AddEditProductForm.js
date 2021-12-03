@@ -68,6 +68,13 @@ export function AddEditProductForm(props) {
         onChange={formik.handleChange}
         error={formik.errors.price}
       />
+      <Form.Input
+        name="description"
+        placeholder="Descripción"
+        value={formik.values.description}
+        onChange={formik.handleChange}
+        error={formik.errors.description}
+      />
       <Dropdown
         placeholder="Categoría"
         fluid
@@ -117,6 +124,7 @@ function formatDropdownData(data) {
 function initialValues(data) {
   return {
     title: data?.title || "",
+    description: data?.description || "",
     price: data?.price || "",
     category: data?.category || "",
     active: data?.active ? true : false,
@@ -128,6 +136,7 @@ function newSchema() {
   return {
     title: Yup.string().required(true),
     price: Yup.number().required(true),
+    description: Yup.string(),
     category: Yup.number().required(true),
     active: Yup.boolean().required(true),
     image: Yup.string().required(true),
@@ -138,6 +147,7 @@ function updateSchema() {
   return {
     title: Yup.string().required(true),
     price: Yup.number().required(true),
+    description: Yup.string(),
     category: Yup.number().required(true),
     active: Yup.boolean().required(true),
     image: Yup.string(),

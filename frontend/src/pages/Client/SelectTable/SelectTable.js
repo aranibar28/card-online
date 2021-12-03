@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Image } from "semantic-ui-react";
 import { useTable } from "../../../hooks";
 import "./SelectTable.scss";
 
@@ -23,7 +23,7 @@ export function SelectTable(props) {
   return (
     <div className="select-table">
       <div className="select-table__content">
-        <h1>Bienvenido al Restaurante</h1>
+        <Image src="https://images.tcdn.com.br/img/img_prod/744994/1580692110_logo_horizontal_sem_fundo.png" />
         <h2>Introduce tu numero de Mesa</h2>
         <Form onSubmit={onSubmit}>
           <Form.Input

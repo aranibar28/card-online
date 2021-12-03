@@ -42,12 +42,16 @@ export function ListProductCart(props) {
     <div className="list-product-cart">
       {map(products, (product, index) => (
         <div key={index} className="list-product-cart__product">
-          <div>
-            <Image src={product.image} avatar />
+          <div className="list-product-cart__product-container">
+            <div>
+              <Image src={product.image} avatar />
+            </div>
             <span>{product.title}</span>
           </div>
-          <span>S/. {product.price}</span>
-          <Icon name="close" onClick={() => removeProduct(index)} />
+          <div>
+            <span>S/. {product.price}</span>
+            <Icon name="close" onClick={() => removeProduct(index)} />
+          </div>
         </div>
       ))}
       <Button primary fluid onClick={createOrder}>
