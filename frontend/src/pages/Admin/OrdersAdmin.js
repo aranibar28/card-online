@@ -5,15 +5,12 @@ import { useTable } from "../../hooks";
 
 export function OrdersAdmin() {
   const { loading, tables, getTables } = useTable();
-  useEffect(
-    () => getTables(),
-    // eslint-disable-next-line
-    []
-  );
- 
+
+  useEffect(() => getTables(), []); // eslint-disable-line
+
   return (
     <>
-      <HeaderPage title="Restaurante" />
+      <HeaderPage title="Lista de Mesas" />
       {loading ? (
         <Loader active inlined="centered">
           Cargando...

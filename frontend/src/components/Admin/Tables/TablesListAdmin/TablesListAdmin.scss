@@ -1,25 +1,40 @@
 .tables-list-admin {
+  &__reload {
     display: flex;
-    flex-wrap: wrap;
-    padding-top: 30px;
-  
-    &__reload {
-      margin: 0;
-      position: absolute;
-      top: 30px;
-      right: 70px;
-    }
-  
-    &__reload-toggle {
-      position: absolute !important;
-      top: 38px;
-      right: 150px;
+    justify-content: space-between;
+
+    div {
       display: flex;
       align-items: center;
-  
-      span {
-        margin-right: 20px;
+      gap: 10px;
+
+      .one,
+      .two,
+      .three,
+      .four {
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+      }
+
+      .one {
+        background-color: #0dcaf0;
+      }
+      .two {
+        background-color: #198754;
+      }
+      .three {
+        background-color: #ffc107;
+      }
+      .four {
+        background-color: #000;
       }
     }
   }
-  
+
+  &__tables {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px 0;
+  }
+}

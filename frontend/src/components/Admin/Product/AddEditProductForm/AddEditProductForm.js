@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useCategory, useProduct } from "../../../../hooks";
 import "./AddEditProductForm.scss";
+import Swal from "sweetalert2";
 
 export function AddEditProductForm(props) {
   const { onClose, onRefetch, product } = props;
@@ -25,6 +26,7 @@ export function AddEditProductForm(props) {
       else await addProduct(formValue);
       onRefetch();
       onClose();
+      Swal.fire("Buen trabajo!", "Se guardaron los cambios", "success");
     },
   });
 

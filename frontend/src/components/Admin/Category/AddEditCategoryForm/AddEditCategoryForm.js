@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useCategory } from "../../../../hooks";
 import "./AddEditCategoryForm.scss";
+import Swal from "sweetalert2";
 
 export function AddEditCategoryForm(props) {
   const { onClose, onRefetch, category } = props;
@@ -21,6 +22,7 @@ export function AddEditCategoryForm(props) {
         else await addCategory(formValue);
         onRefetch();
         onClose();
+        Swal.fire("Buen trabajo!", "Se guardaron los cambios", "success");
       } catch (error) {
         console.error(error);
       }

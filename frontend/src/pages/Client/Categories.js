@@ -5,10 +5,7 @@ import { ListCategories } from "../../components/Client";
 export function Categories() {
   const { loading, categories, getCategories } = useCategory();
 
-  useEffect(
-    () => getCategories(), // eslint-disable-next-line
-    []
-  );
+  useEffect(() => getCategories(), []); // eslint-disable-line
 
   return (
     <div>

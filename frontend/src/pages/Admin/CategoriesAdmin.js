@@ -7,6 +7,7 @@ import {
 } from "../../components/Admin";
 import { useCategory } from "../../hooks";
 import { ModalBasic } from "../../components/Common";
+import Swal from "sweetalert2";
 
 export function CategoriesAdmin() {
   const [showModal, setShowModal] = useState(false);
@@ -38,10 +39,27 @@ export function CategoriesAdmin() {
   };
 
   const onDeleteCategory = async (data) => {
-    const result = window.confirm(`Elminar cateogria ${data.title}?`);
-    if (result) {
-      await deleteCategory(data.id);
-      onRefetch();
+    try {
+      const alert = await Swal.fire({
+        title: "¿Estás seguro?",
+        text: "¡No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, Eliminar!",
+        cancelButtonText: "No, Cancelar",
+      });
+      if (alert.isConfirmed) {
+        Swal.fire(
+          "Eliminado",
+          `La categoría ${data.title} ha sido borrado.`,
+          "success"
+        );
+        await deleteCategory(data.id);
+        onRefetch();
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
     }
   };
 

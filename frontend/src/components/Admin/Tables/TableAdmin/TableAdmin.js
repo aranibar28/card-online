@@ -52,12 +52,12 @@ export function TableAdmin(props) {
   return (
     <Link className="table-admin" to={`/admin/table/${table.id}`}>
       {size(orders) > 0 ? (
-        <Label circular color="orange">
+        <Label circular color="red">
           {size(orders)}
         </Label>
       ) : null}
       {pendingPayment && (
-        <Label circular color="orange">
+        <Label circular color="red">
           Cuenta
         </Label>
       )}

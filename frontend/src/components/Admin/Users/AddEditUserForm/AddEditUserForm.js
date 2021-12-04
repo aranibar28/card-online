@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useUser } from "../../../../hooks";
 import "./AddEditUserForm.scss";
+import Swal from "sweetalert2";
 
 export function AddEditUserForm(props) {
   const { onClose, onRefetch, user } = props;
@@ -19,6 +20,7 @@ export function AddEditUserForm(props) {
         else await addUser(formValue);
         onRefetch();
         onClose();
+        Swal.fire("Buen trabajo!", "Se guardaron los cambios", "success");
       } catch (error) {
         console.error(error);
       }

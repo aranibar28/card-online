@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useTable } from "../../../../hooks";
 import "./AddEditTableForm.scss";
+import Swal from "sweetalert2";
 
 export function AddEditTableForm(props) {
   const { onClose, onRefetch, table } = props;
@@ -18,6 +19,7 @@ export function AddEditTableForm(props) {
       else await addTable(formValue);
       onRefetch();
       onClose();
+      Swal.fire("Buen trabajo!", "Se guardaron los cambios", "success");
     },
   });
   return (
