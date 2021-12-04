@@ -23,8 +23,7 @@ export function AuthProvider(props) {
         setAuth(null);
       }
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); // eslint-disable-line
 
   const login = async (token) => {
     setToken(token);

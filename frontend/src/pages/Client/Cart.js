@@ -22,8 +22,7 @@ export function Cart() {
       }
       setProducts(productsArray);
     })();
-    // eslint-disable-next-line
-  }, [reloadCart]);
+  }, [reloadCart]); // eslint-disable-line
 
   const onReloadCart = () => setReloadCart((prev) => !prev);
 

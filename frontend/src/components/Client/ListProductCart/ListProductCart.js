@@ -20,8 +20,7 @@ export function ListProductCart(props) {
       totalTemp += Number(product.price);
     });
     setTotal(totalTemp.toFixed(2));
-    // eslint-disable-next-line
-  }, [products]);
+  }, [products]); // eslint-disable-line
 
   const removeProduct = (index) => {
     removeProductCart(index);

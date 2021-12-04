@@ -66,7 +66,7 @@ function Actions(props) {
         <Icon name="pencil" />
       </Button>
       <Button icon negative onClick={() => deleteTable(table)}>
-        <Icon name="close" />
+        <Icon name="trash alternate" />
       </Button>
     </Table.Cell>
   );

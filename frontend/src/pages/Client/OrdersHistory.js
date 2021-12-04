@@ -24,8 +24,7 @@ export function OrdersHistory() {
 
       getOrdersByTable(idTableTemp, "", "ordering=-status,-created_at");
     })();
-    // eslint-disable-next-line
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     (async () => {
@@ -34,8 +33,7 @@ export function OrdersHistory() {
         setIsRequestAccount(response);
       }
     })();
-    // eslint-disable-next-line
-  }, [idTable]);
+  }, [idTable]); // eslint-disable-line
 
   const onCreatePayment = async (typePayment) => {
     setShowTypePayment(false);

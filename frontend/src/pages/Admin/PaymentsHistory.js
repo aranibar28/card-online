@@ -6,11 +6,7 @@ import { usePayment } from "../../hooks";
 export function PaymentsHistory() {
   const { loading, payments, getPayments } = usePayment();
 
-  useEffect(
-    () => getPayments(),
-    // eslint-disable-next-line
-    []
-  );
+  useEffect(() => getPayments(), []); // eslint-disable-line
 
   return (
     <>

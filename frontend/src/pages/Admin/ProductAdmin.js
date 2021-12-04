@@ -7,6 +7,7 @@ import {
 } from "../../components/Admin";
 import { ModalBasic } from "../../components/Common";
 import { useProduct } from "../../hooks";
+import Swal from "sweetalert2";
 
 export function ProductAdmin() {
   const [showModal, setShowModal] = useState(false);
@@ -17,8 +18,7 @@ export function ProductAdmin() {
 
   useEffect(
     () => getProducts(),
-    // eslint-disable-next-line
-    [refetch]
+    [refetch] // eslint-disable-line
   );
 
   const openCloseModal = () => setShowModal((prev) => !prev);
@@ -44,10 +44,27 @@ export function ProductAdmin() {
   };
 
   const onDeleteProduct = async (data) => {
-    const result = window.confirm(`Eliminar producto ${data.title} ?`);
-    if (result) {
-      await deleteProduct(data.id);
-      onRefetch();
+    try {
+      const alert = await Swal.fire({
+        title: "¿Estás seguro?",
+        text: "¡No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, Eliminar!",
+        cancelButtonText: "No, Cancelar",
+      });
+      if (alert.isConfirmed) {
+        Swal.fire(
+          "Eliminado",
+          `El producto ${data.title} ha sido borrado.`,
+          "success"
+        );
+        await deleteProduct(data.id);
+        onRefetch();
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
     }
   };
 

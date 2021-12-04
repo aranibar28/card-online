@@ -13,11 +13,7 @@ export function AddOrderForm(props) {
   const { products, getProducts, getProductById } = useProduct();
   const { addOrderToTable } = useOrder();
 
-  useEffect(
-    () => getProducts(),
-    // eslint-disable-next-line
-    []
-  );
+  useEffect(() => getProducts(), []); // eslint-disable-line
 
   useEffect(() => setProductsFormat(formatDropdownData(products)), [products]);
 
@@ -35,8 +31,8 @@ export function AddOrderForm(props) {
   });
 
   useEffect(
-    () => addProductList(), // eslint-disable-next-line
-    [formik.values]
+    () => addProductList(),
+    [formik.values] // eslint-disable-line
   );
 
   const addProductList = async () => {

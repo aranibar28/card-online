@@ -47,11 +47,11 @@ function Actions(props) {
   const { user, updateUser, onDeleteUser } = props;
   return (
     <Table.Cell textAlign="right">
-      <Button icon onClick={() => updateUser(user)} color="yellow">
+      <Button icon onClick={() => updateUser(user)}>
         <Icon name="pencil" />
       </Button>
       <Button icon onClick={() => onDeleteUser(user)} color="red">
-        <Icon name="close" />
+        <Icon name="trash alternate" />
       </Button>
     </Table.Cell>
   );

@@ -7,6 +7,7 @@ import {
 } from "../../components/Admin";
 import { ModalBasic } from "../../components/Common";
 import { useUser } from "../../hooks";
+import Swal from "sweetalert2";
 
 export function UsersAdmin() {
   const [showModal, setShowModal] = useState(false);
@@ -17,8 +18,7 @@ export function UsersAdmin() {
 
   useEffect(() => {
     getUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refetch]);
+  }, [refetch]); // eslint-disable-line
 
   const openCloseModal = () => setShowModal((prev) => !prev);
   const onRefetch = () => setRefetch((prev) => !prev);
@@ -44,14 +44,27 @@ export function UsersAdmin() {
   };
 
   const onDeleteUser = async (data) => {
-    const result = window.confirm(`¿Eliminar usuario ${data.email} ?`);
-    if (result) {
-      try {
+    try {
+      const alert = await Swal.fire({
+        title: "¿Estás seguro?",
+        text: "¡No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, Eliminar!",
+        cancelButtonText: "No, Cancelar",
+      });
+      if (alert.isConfirmed) {
+        Swal.fire(
+          "Eliminado",
+          `El usuario ${data.title} ha sido borrado.`,
+          "success"
+        );
         await deleteUser(data.id);
         onRefetch();
-      } catch (error) {
-        console.error(error);
       }
+    } catch (error) {
+      console.log(error);
+      return false;
     }
   };
 

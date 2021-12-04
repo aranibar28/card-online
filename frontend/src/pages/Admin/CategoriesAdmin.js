@@ -65,8 +65,7 @@ export function CategoriesAdmin() {
 
   useEffect(() => {
     getCategories();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refetch]);
+  }, [refetch]); // eslint-disable-line
 
   return (
     <div>

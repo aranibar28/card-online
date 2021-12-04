@@ -25,8 +25,7 @@ export function TableAdmin(props) {
       );
       setOrders(response);
     })();
-    // eslint-disable-next-line
-  }, [reload]);
+  }, [reload]); // eslint-disable-line
 
   useEffect(() => {
     (async () => {
@@ -37,8 +36,7 @@ export function TableAdmin(props) {
       if (size(response) > 0) setTableBusy(response);
       else setTableBusy(false);
     })();
-    // eslint-disable-next-line
-  }, [reload]);
+  }, [reload]); // eslint-disable-line
 
   useEffect(() => {
     (async () => {
@@ -46,8 +44,7 @@ export function TableAdmin(props) {
       if (size(response) > 0) setPendingPayment(true);
       else setPendingPayment(false);
     })();
-    // eslint-disable-next-line
-  }, [reload]);
+  }, [reload]); // eslint-disable-line
 
   return (
     <Link className="table-admin" to={`/admin/table/${table.id}`}>

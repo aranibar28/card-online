@@ -8,8 +8,8 @@ export function Products() {
   const { loading, products, getProductsByCategory } = useProduct();
 
   useEffect(
-    () => getProductsByCategory(idCategory), // eslint-disable-next-line
-    [idCategory]
+    () => getProductsByCategory(idCategory),
+    [idCategory] // eslint-disable-line
   );
 
   return (

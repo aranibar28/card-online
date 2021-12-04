@@ -15,8 +15,7 @@ export function ClientLayout(props) {
       const exist = await isExistTable(tableNumber);
       if (!exist) closeTable();
     })();
-    // eslint-disable-next-line
-  }, [tableNumber]);
+  }, [tableNumber]); // eslint-disable-line
 
   const closeTable = () => {
     history.push("/");

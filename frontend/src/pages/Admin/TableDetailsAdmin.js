@@ -21,21 +21,16 @@ export function TableDetailsAdmin() {
 
   useEffect(() => {
     getOrdersByTable(id, "", "ordering=-status,created_at");
-    // eslint-disable-next-line
-  }, [id, reloadOrders]);
+  }, [id, reloadOrders]); // eslint-disable-line
 
-  useEffect(
-    () => getTable(id), // eslint-disable-next-line
-    [id]
-  );
+  useEffect(() => getTable(id), [id]); // eslint-disable-line
 
   useEffect(() => {
     (async () => {
       const response = await getPaymentByTable(id);
       if (size(response) > 0) setPaymentData(response[0]);
     })();
-    // eslint-disable-next-line
-  }, [reloadOrders]);
+  }, [reloadOrders]); // eslint-disable-line
 
   const onReloadOrders = () => setReloadOrders((prev) => !prev);
   const openCloseModal = () => setShowModal((prev) => !prev);

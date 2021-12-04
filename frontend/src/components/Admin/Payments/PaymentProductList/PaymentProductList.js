@@ -14,8 +14,7 @@ export function PaymentProductList(props) {
       const response = await getOrdersByPayment(payment.id);
       setOrders(response);
     })();
-    // eslint-disable-next-line
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
     <div className="payment-product-list">

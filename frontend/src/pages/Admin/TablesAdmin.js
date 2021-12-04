@@ -7,6 +7,7 @@ import {
 } from "../../components/Admin";
 import { ModalBasic } from "../../components/Common";
 import { useTable } from "../../hooks";
+import Swal from "sweetalert2";
 
 export function TablesAdmin() {
   const [showModal, setShowModal] = useState(false);
@@ -18,8 +19,7 @@ export function TablesAdmin() {
 
   useEffect(
     () => getTables(),
-    // eslint-disable-next-line
-    [refetch]
+    [refetch] // eslint-disable-line
   );
 
   const openCloseModal = () => setShowModal((prev) => !prev);
@@ -46,10 +46,27 @@ export function TablesAdmin() {
   };
 
   const onDeleteTable = async (data) => {
-    const result = window.confirm(`¿Eliminar mesa ${data.number} ?`);
-    if (result) {
-      await deleteTable(data.id);
-      onRefetch();
+    try {
+      const alert = await Swal.fire({
+        title: "¿Estás seguro?",
+        text: "¡No podrás revertir esto!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, Eliminar!",
+        cancelButtonText: "No, Cancelar",
+      });
+      if (alert.isConfirmed) {
+        Swal.fire(
+          "Eliminado",
+          `La tabla ${data.title} ha sido borrado.`,
+          "success"
+        );
+        await deleteTable(data.id);
+        onRefetch();
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
     }
   };
 

@@ -33,8 +33,7 @@ export function AddEditCategoryForm(props) {
     const file = acceptedFile[0];
     await formik.setFieldValue("image", file);
     setPreviewImage(URL.createObjectURL(file));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); // eslint-disable-line
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/jpeg, image/png",

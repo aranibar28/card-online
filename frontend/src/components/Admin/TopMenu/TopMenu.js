@@ -3,6 +3,7 @@ import { Icon, Menu, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks";
 import "./TopMenu.scss";
+import Swal from "sweetalert2";
 
 export function TopMenu() {
   const { auth, logout } = useAuth();
@@ -14,6 +15,26 @@ export function TopMenu() {
     return auth.me?.email;
   };
 
+  const onLogout = async (data) => {
+    try {
+      const alert = await Swal.fire({
+        title: "¿Está seguro de cerrar la sesión?",
+        text: "Seleccione una opción",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, Salir",
+        cancelButtonText: "No, Cancelar",
+      });
+      if (alert.isConfirmed) {
+        await Swal.fire("Nos vemos!", "Hasta pronto.", "success");
+        logout();
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  };
+
   return (
     <Menu fixed="top" className="top-menu-admin">
       <Menu.Item className="top-menu-admin__logo">
@@ -23,7 +44,7 @@ export function TopMenu() {
       </Menu.Item>
       <Menu.Menu position="right" className="top-menu-admin__user">
         <Menu.Item>Hola, {renderName()}</Menu.Item>
-        <Menu.Item onClick={logout}>
+        <Menu.Item onClick={onLogout}>
           <Icon name="sign-out" />
         </Menu.Item>
       </Menu.Menu>

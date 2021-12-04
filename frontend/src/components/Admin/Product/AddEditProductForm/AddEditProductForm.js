@@ -30,11 +30,8 @@ export function AddEditProductForm(props) {
     },
   });
 
-  useEffect(
-    () => getCategories(),
-    // eslint-disable-next-line
-    []
-  );
+  useEffect(() => getCategories(), []); // eslint-disable-line
+  
   useEffect(() => {
     setCategoriesFormat(formatDropdownData(categories));
   }, [categories]);
@@ -43,8 +40,7 @@ export function AddEditProductForm(props) {
     const file = acceptedFile[0];
     await formik.setFieldValue("image", file);
     setPreviewImage(URL.createObjectURL(file));
-    // eslint-disable-next-line
-  }, []);
+  }, []); // eslint-disable-line
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: "image/jpeg, image/png",
