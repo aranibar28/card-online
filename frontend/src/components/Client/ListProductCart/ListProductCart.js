@@ -5,6 +5,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useOrder, useTable } from "../../../hooks";
 import { removeProductCart, clearProductCart } from "../../../api/cart";
 import "./ListProductCart.scss";
+import Swal from "sweetalert2";
 
 export function ListProductCart(props) {
   const { products, onReloadCart } = props;
@@ -34,6 +35,13 @@ export function ListProductCart(props) {
       await addOrderToTable(idTable, product.id);
     }
     clearProductCart();
+    await Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Su pedido ha sido solicitado!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
     history.push(`/client/${tableNumber}/orders`);
   };
 
@@ -53,7 +61,12 @@ export function ListProductCart(props) {
           </div>
         </div>
       ))}
-      <Button primary fluid onClick={createOrder} className="animate__animated animate__zoomIn">
+      <Button
+        primary
+        fluid
+        onClick={createOrder}
+        className="animate__animated animate__zoomIn"
+      >
         Realizar Pedido ( S/. {total} )
       </Button>
     </div>

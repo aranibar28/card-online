@@ -25,7 +25,11 @@ export function Products() {
       >
         Volver a Categorias
       </Link>
-      {loading ? <p>Cargando...</p> : <ListProducts products={products} />}
+      {loading ? (
+        <p className="loader">Cargando...</p>
+      ) : (
+        <ListProducts products={products} />
+      )}
     </div>
   );
 }

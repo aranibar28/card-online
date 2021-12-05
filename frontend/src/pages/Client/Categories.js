@@ -11,7 +11,7 @@ export function Categories() {
     <div>
       <h3>Categorias</h3>
       {loading ? (
-        <p>Cargando...</p>
+        <p className="loader">Cargando...</p>
       ) : (
         <ListCategories categories={categories} />
       )}

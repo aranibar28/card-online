@@ -26,7 +26,9 @@ export function TableProductAdmin(props) {
             </Table.Cell>
             <Table.Cell>{product.title}</Table.Cell>
             <Table.Cell>S/. {product.price}</Table.Cell>
-            <Table.Cell>{product.category_data.title}</Table.Cell>
+            <Table.Cell>
+              {product.category_data?.title || "Sin categoria"}
+            </Table.Cell>
             <Table.Cell className="status">
               {product.active ? <Icon name="check" /> : <Icon name="close" />}
             </Table.Cell>

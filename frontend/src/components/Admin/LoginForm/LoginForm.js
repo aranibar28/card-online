@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Form } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
@@ -10,6 +11,7 @@ import Swal from "sweetalert2";
 import "./LoginForm.scss";
 
 export function LoginForm() {
+  const history = useHistory();
   const { login } = useAuth();
   const formik = useFormik({
     initialValues: initialValues(),
@@ -24,6 +26,7 @@ export function LoginForm() {
           "success"
         );
         login(access);
+        history.push("/admin");
       } catch (error) {
         toast.error(error.message);
       }

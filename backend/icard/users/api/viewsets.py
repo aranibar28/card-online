@@ -20,7 +20,8 @@ class UserApiViewSet(ModelViewSet):
     
     # Encriptar la contraseña durante el Update
     def partial_update(self, request, *args, **kwargs):
-        password = request.data['password']
+        password = request.data.get('password')
+        kwargs['partial'] = True
         if password:
             request.data['password'] = make_password(password)
         else:

@@ -30,7 +30,7 @@ export function Cart() {
     <div>
       <h3>Carrito</h3>
       {!products ? (
-        <p>Cargando...</p>
+        <p className="loader">Cargando...</p>
       ) : size(products) === 0 ? (
         <div style={{ textAlign: "center", marginTop: "100px" }}>
           <p>Tu carrito esta vacío</p>

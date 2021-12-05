@@ -28,17 +28,16 @@ export function ListProducts(props) {
   return (
     <div className="list-products-client">
       {map(products, (product) => (
-        <div
-          key={product.id}
-          className="list-products-client__product animate__animated animate__slideInUp"
-        >
-          <div className="list-products-client__product-title ">
+        <div key={product.id} className="list-products-client__product">
+          <div className="list-products-client__product-title">
             <h4>{product.title}</h4>
             <p>{product.description}</p>
             <Button primary icon onClick={() => addCart(product)}>
               Agregar <Icon name="add" />
             </Button>
-            <span>S/. {product.price}</span>
+            <span className="animate__animated animate__fadeIn">
+              S/. {product.price}
+            </span>
           </div>
           <div
             className="list-products-client__product-image"
