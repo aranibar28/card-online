@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Form, Button, Image } from "semantic-ui-react";
 import { useTable } from "../../../hooks";
 import "./SelectTable.scss";
+import Swal from "sweetalert2";
+import logo from "../../../assets/logo.png";
 
 export function SelectTable(props) {
   const { history } = props;
@@ -12,18 +14,40 @@ export function SelectTable(props) {
   const onSubmit = async () => {
     setError(null);
     if (!tableNum) {
-      setError("No has introducido niguna mesa");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        width: "320px",
+        text: "No has introducido ninguna mesa",
+      });
     } else {
       const exist = await isExistTable(tableNum);
-      if (exist) history.push(`/client/${tableNum}`);
-      else setError("El numero de la mesa no existe!");
+      if (exist) {
+        await Swal.fire({
+          icon: "success",
+          position: "center",
+          width: "320px",
+          title: "Bienvenido!",
+          text: `El número de su mesa es ${tableNum}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        history.push(`/client/${tableNum}`);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          width: "320px",
+          text: "El número de la mesa no existe!",
+        });
+      }
     }
   };
 
   return (
     <div className="select-table">
       <div className="select-table__content">
-        <Image src="https://images.tcdn.com.br/img/img_prod/744994/1580692110_logo_horizontal_sem_fundo.png" />
+        <Image src={logo} />
         <h2>Introduce tu numero de Mesa</h2>
         <Form onSubmit={onSubmit}>
           <Form.Input

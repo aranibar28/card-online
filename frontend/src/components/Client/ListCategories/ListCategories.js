@@ -8,7 +8,7 @@ export function ListCategories(props) {
   const { categories } = props;
   const location = useLocation();
   const history = useHistory();
-  
+
   const goToCategory = (id) => {
     history.push(`${location.pathname}/${id}`);
   };
@@ -17,7 +17,7 @@ export function ListCategories(props) {
       {map(categories, (category) => (
         <div
           key={category.id}
-          className="list-categories-client__category"
+          className="list-categories-client__category animate__animated animate__lightSpeedInLeft"
           onClick={() => goToCategory(category.id)}
         >
           <Image src={category.image} size="small" />

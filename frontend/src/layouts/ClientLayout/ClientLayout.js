@@ -3,6 +3,8 @@ import { Container, Button, Icon, Image } from "semantic-ui-react";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { useTable } from "../../hooks";
 import "./ClientLayout.scss";
+import Swal from "sweetalert2";
+import logo from "../../assets/logo.png";
 
 export function ClientLayout(props) {
   const { children } = props;
@@ -17,8 +19,26 @@ export function ClientLayout(props) {
     })();
   }, [tableNumber]); // eslint-disable-line
 
-  const closeTable = () => {
-    history.push("/");
+  const closeTable = async () => {
+    try {
+      const alert = await Swal.fire({
+        title: "¿Está seguro de salir?",
+        text: "Seleccione una opción",
+        width: "320px",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#f44b03",
+        confirmButtonText: "SI",
+        cancelButtonText: "NO",
+      });
+      if (alert.isConfirmed) {
+        await Swal.fire("Nos vemos!", "Esperamos verte pronto. Gracias.", "success");
+        history.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
   };
 
   const goToCart = () => {
@@ -34,7 +54,7 @@ export function ClientLayout(props) {
       <Container className="client-layout">
         <div className="client-layout__header">
           <Link to={`/client/${tableNumber}`}>
-            <Image src="https://images.tcdn.com.br/img/img_prod/744994/1580692110_logo_horizontal_sem_fundo.png" />
+            <Image src={logo} />
           </Link>
           <span>Mesa {tableNumber}</span>
           <div>

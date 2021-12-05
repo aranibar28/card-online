@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks";
 import "./TopMenu.scss";
 import Swal from "sweetalert2";
+import logo from "../../../assets/logo.png";
 
 export function TopMenu() {
   const { auth, logout } = useAuth();
@@ -39,7 +40,7 @@ export function TopMenu() {
     <Menu fixed="top" className="top-menu-admin">
       <Menu.Item className="top-menu-admin__logo">
         <Link to={`/admin`}>
-          <Image src="https://images.tcdn.com.br/img/img_prod/744994/1580692110_logo_horizontal_sem_fundo.png" />
+          <Image src={logo} />
         </Link>
       </Menu.Item>
       <Menu.Menu position="right" className="top-menu-admin__user">

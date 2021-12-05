@@ -53,7 +53,7 @@ export function ListProductCart(props) {
           </div>
         </div>
       ))}
-      <Button primary fluid onClick={createOrder}>
+      <Button primary fluid onClick={createOrder} className="animate__animated animate__zoomIn">
         Realizar Pedido ( S/. {total} )
       </Button>
     </div>

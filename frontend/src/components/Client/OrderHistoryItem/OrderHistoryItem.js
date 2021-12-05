@@ -29,7 +29,7 @@ export function OrderHistoryItem(props) {
       <div className="order-history-item__product">
         <p>{title}</p>
         {order.status === ORDER_STATUS.PENDING ? (
-          <span>En marcha</span>
+          <span className="animate__animated animate__flash">En marcha</span>
         ) : (
           <span>Entregado</span>
         )}
