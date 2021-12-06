@@ -58,7 +58,7 @@ export function TablesAdmin() {
       if (alert.isConfirmed) {
         Swal.fire(
           "Eliminado",
-          `La tabla ${data.title} ha sido borrado.`,
+          `La mesa ${data.number} ha sido eliminado.`,
           "success"
         );
         await deleteTable(data.id);

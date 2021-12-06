@@ -56,7 +56,7 @@ export function ProductAdmin() {
       if (alert.isConfirmed) {
         Swal.fire(
           "Eliminado",
-          `El producto ${data.title} ha sido borrado.`,
+          `El producto ${data.title} ha sido eliminado.`,
           "success"
         );
         await deleteProduct(data.id);

@@ -22,7 +22,7 @@ export function AddEditCategoryForm(props) {
         else await addCategory(formValue);
         onRefetch();
         onClose();
-        Swal.fire("Buen trabajo!", "Se guardaron los cambios", "success");
+        Swal.fire("Completado!", "Se guardaron los cambios.", "success");
       } catch (error) {
         console.error(error);
       }

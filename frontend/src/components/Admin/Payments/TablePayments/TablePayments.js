@@ -21,7 +21,7 @@ export function TablePayments(props) {
   const openCloseModal = () => setShowModal((prev) => !prev);
 
   const showDetails = (payment) => {
-    setTitleModal(`Pedidos de la mesa ${payment.table_data?.number || null}`);
+    setTitleModal(`Pedidos de la Mesa ${payment.table_data?.number || null}`);
     setContentModal(<PaymentProductList payment={payment} />);
     openCloseModal();
   };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Image } from "semantic-ui-react";
 import { map } from "lodash";
 import { useOrder } from "../../../../hooks";
+import { EMPTY } from "../../../../utils/constants";
 import "./PaymentProductList.scss";
 
 export function PaymentProductList(props) {
@@ -21,13 +22,16 @@ export function PaymentProductList(props) {
       {map(orders, (order) => (
         <div className="payment-product-list__product" key={order.id}>
           <div>
-            <Image src={order.product_data?.image || ""} avatar size="tiny" />
+            <Image
+              src={order.product_data?.image || EMPTY.src}
+              avatar
+              size="tiny"
+            />
             <span>
-              {order.product_data?.title ||
-                "Este producto ya no existe en la base de datos."}
+              {order.product_data?.title || "Este producto ya no existe."}
             </span>
           </div>
-          <span>S/. {order.product_data?.price || "0.0"}</span>
+          <span>S/. {order.product_data?.price || "00.00"}</span>
         </div>
       ))}
     </div>

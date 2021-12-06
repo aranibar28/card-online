@@ -37,7 +37,7 @@ export function CategoriesAdmin() {
     );
     openCloseModal();
   };
-
+ 
   const onDeleteCategory = async (data) => {
     try {
       const alert = await Swal.fire({
@@ -51,7 +51,7 @@ export function CategoriesAdmin() {
       if (alert.isConfirmed) {
         Swal.fire(
           "Eliminado",
-          `La categoría ${data.title} ha sido borrado.`,
+          `La categoría ${data.title} ha sido eliminado.`,
           "success"
         );
         await deleteCategory(data.id);

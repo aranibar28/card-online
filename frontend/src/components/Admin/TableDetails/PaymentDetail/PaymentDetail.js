@@ -27,7 +27,7 @@ export function PaymentDetail(props) {
     await Swal.fire({
       position: "center",
       icon: "success",
-      title: "Tu operación ha sido guardado.",
+      title: "Operación completada!",
       showConfirmButton: false,
       timer: 2000,
     });

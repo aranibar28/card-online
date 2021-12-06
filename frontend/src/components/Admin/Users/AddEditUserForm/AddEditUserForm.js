@@ -20,7 +20,7 @@ export function AddEditUserForm(props) {
         else await addUser(formValue);
         onRefetch();
         onClose();
-        Swal.fire("Buen trabajo!", "Se guardaron los cambios", "success");
+        Swal.fire("Completado!", "Se guardaron los cambios.", "success");
       } catch (error) {
         console.error(error);
       }

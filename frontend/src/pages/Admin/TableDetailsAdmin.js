@@ -39,7 +39,7 @@ export function TableDetailsAdmin() {
   const onCreatePayment = async (typePayment) => {
     let totalPayment = 0;
     forEach(orders, (order) => {
-      totalPayment += Number(order.product_data.price);
+      totalPayment += Number(order.product_data?.price || "");
     });
     const paymentData = {
       table: id,
@@ -67,11 +67,11 @@ export function TableDetailsAdmin() {
         cancelButtonText: "Cancelar",
       });
       if (alert.isConfirmed) {
-        Swal.fire("Listo!", "Usted ha seleccionado Tarjeta", "success");
+        Swal.fire("Completado!", "Método de pago en Tarjeta.", "success");
         onCreatePayment("CARD");
         onReloadOrders();
       } else if (alert.isDenied) {
-        Swal.fire("Listo!", "Usted ha seleccionado Efectivo", "success");
+        Swal.fire("Completado!", "Método de pago en Efectivo.", "success");
         onCreatePayment("CASH");
         onReloadOrders();
       }

@@ -19,7 +19,7 @@ export function AddEditTableForm(props) {
       else await addTable(formValue);
       onRefetch();
       onClose();
-      Swal.fire("Buen trabajo!", "Se guardaron los cambios", "success");
+      Swal.fire("Completado!", "Se guardaron los cambios", "success");
     },
   });
   return (

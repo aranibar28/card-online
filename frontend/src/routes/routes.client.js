@@ -1,5 +1,6 @@
-import { ClientLayout, BasicLayout } from "../layouts";
+import { HomeLayout, ClientLayout, BasicLayout } from "../layouts";
 import {
+  Home,
   SelectTable,
   Categories,
   Products,
@@ -10,6 +11,12 @@ import {
 const routesClient = [
   {
     path: "/",
+    layout: HomeLayout,
+    component: Home,
+    exact: true,
+  },
+  {
+    path: "/client",
     layout: BasicLayout,
     component: SelectTable,
     exact: true,

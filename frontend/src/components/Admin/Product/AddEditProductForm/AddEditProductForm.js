@@ -26,7 +26,7 @@ export function AddEditProductForm(props) {
       else await addProduct(formValue);
       onRefetch();
       onClose();
-      Swal.fire("Buen trabajo!", "Se guardaron los cambios", "success");
+      Swal.fire("Completado!", "Se guardaron los cambios.", "success");
     },
   });
 

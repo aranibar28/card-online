@@ -79,11 +79,11 @@ export function OrdersHistory() {
         cancelButtonText: "Cancelar",
       });
       if (alert.isConfirmed) {
-        Swal.fire("Listo!", "Usted ha seleccionado Tarjeta", "success");
+        Swal.fire("Completado!", "Método de pago en Tarjeta.", "success");
         onCreatePayment("CARD");
         onReloadHistory();
       } else if (alert.isDenied) {
-        Swal.fire("Listo!", "Usted ha seleccionado Efectivo", "success");
+        Swal.fire("Completado!", "Método de pago en Efectivo.", "success");
         onCreatePayment("CASH");
         onReloadHistory();
       }

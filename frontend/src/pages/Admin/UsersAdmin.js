@@ -58,7 +58,7 @@ export function UsersAdmin() {
       if (alert.isConfirmed) {
         Swal.fire(
           "Eliminado",
-          `El usuario ${data.title} ha sido borrado.`,
+          `El usuario ${data.username} ha sido eliminado.`,
           "success"
         );
         await deleteUser(data.id);
