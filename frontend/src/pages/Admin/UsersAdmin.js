@@ -6,8 +6,9 @@ import {
   AddEditUserForm,
 } from "../../components/Admin";
 import { ModalBasic } from "../../components/Common";
-import { useUser } from "../../hooks";
+import { useUser, useAuth } from "../../hooks";
 import Swal from "sweetalert2";
+import { Error403 } from "../Error403";
 
 export function UsersAdmin() {
   const [showModal, setShowModal] = useState(false);
@@ -15,6 +16,7 @@ export function UsersAdmin() {
   const [contentModal, setContentModal] = useState(null);
   const [refetch, setRefetch] = useState(false);
   const { loading, users, getUser, deleteUser } = useUser();
+  const { auth } = useAuth();
 
   useEffect(() => {
     getUser();
@@ -68,7 +70,9 @@ export function UsersAdmin() {
     }
   };
 
-  return (
+  return !auth.me?.is_staff ? (
+    <Error403 />
+  ) : (
     <>
       <HeaderPage
         title="Usuarios"

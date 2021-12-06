@@ -21,7 +21,7 @@ export function TablePayments(props) {
   const openCloseModal = () => setShowModal((prev) => !prev);
 
   const showDetails = (payment) => {
-    setTitleModal(`Pedidos de la mesa ${payment.table_data.number}`);
+    setTitleModal(`Pedidos de la mesa ${payment.table_data?.number || null}`);
     setContentModal(<PaymentProductList payment={payment} />);
     openCloseModal();
   };
@@ -31,7 +31,7 @@ export function TablePayments(props) {
       <Table className="table-payments-admin">
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>ID</Table.HeaderCell>
+            <Table.HeaderCell>#</Table.HeaderCell>
             <Table.HeaderCell>Mesa</Table.HeaderCell>
             <Table.HeaderCell>Total</Table.HeaderCell>
             <Table.HeaderCell>Tipo de Pago</Table.HeaderCell>
@@ -42,8 +42,8 @@ export function TablePayments(props) {
         <Table.Body>
           {map(payments, (payment, index) => (
             <Table.Row key={index}>
-              <Table.Cell>{payment.id}</Table.Cell>
-              <Table.Cell># {payment.table_data.number}</Table.Cell>
+              <Table.Cell>{index + 1}</Table.Cell>
+              <Table.Cell>N° {payment.table_data?.number || null}</Table.Cell>
               <Table.Cell>S/. {payment.totalPayment}</Table.Cell>
               <Table.Cell>
                 <Icon name={getIconPaymentName(payment.typePayment)}></Icon>

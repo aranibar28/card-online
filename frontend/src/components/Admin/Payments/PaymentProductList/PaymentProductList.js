@@ -21,10 +21,13 @@ export function PaymentProductList(props) {
       {map(orders, (order) => (
         <div className="payment-product-list__product" key={order.id}>
           <div>
-            <Image src={order.product_data.image} avatar size="tiny" />
-            <span>{order.product_data.title}</span>
+            <Image src={order.product_data?.image || ""} avatar size="tiny" />
+            <span>
+              {order.product_data?.title ||
+                "Este producto ya no existe en la base de datos."}
+            </span>
           </div>
-          <span>S/. {order.product_data.price}</span>
+          <span>S/. {order.product_data?.price || "0.0"}</span>
         </div>
       ))}
     </div>

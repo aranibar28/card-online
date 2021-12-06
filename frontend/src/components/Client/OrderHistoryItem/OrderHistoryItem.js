@@ -8,7 +8,7 @@ import "./OrderHistoryItem.scss";
 
 export function OrderHistoryItem(props) {
   const { order } = props;
-  const { title, image } = order.product_data;
+  const { title, image } = order?.product_data || "";
 
   return (
     <div

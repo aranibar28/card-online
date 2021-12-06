@@ -9,6 +9,7 @@ import {
   PaymentDetail,
 } from "../../components/Admin/TableDetails";
 import { useOrder, useTable, usePayment } from "../../hooks";
+import Swal from "sweetalert2";
 
 export function TableDetailsAdmin() {
   const [reloadOrders, setReloadOrders] = useState(false);
@@ -35,31 +36,48 @@ export function TableDetailsAdmin() {
   const onReloadOrders = () => setReloadOrders((prev) => !prev);
   const openCloseModal = () => setShowModal((prev) => !prev);
 
-  const onCreatePayment = async () => {
-    const result = window.confirm(
-      "¿Estas seguro de generar la cuenta de la mesa?"
-    );
-    if (result) {
-      let totalPayment = 0;
-      forEach(orders, (order) => {
-        totalPayment += Number(order.product_data.price);
+  const onCreatePayment = async (typePayment) => {
+    let totalPayment = 0;
+    forEach(orders, (order) => {
+      totalPayment += Number(order.product_data.price);
+    });
+    const paymentData = {
+      table: id,
+      totalPayment: totalPayment.toFixed(2),
+      typePayment,
+      statusPayment: "PENDING",
+    };
+    const payment = await createPayment(paymentData);
+    for await (const order of orders) {
+      await addPaymentToOrder(order.id, payment.id);
+    }
+  };
+
+  const onPayment = async () => {
+    try {
+      const alert = await Swal.fire({
+        title: "¿Pagar con tarjeta o efectivo?",
+        text: "Seleccione una opción",
+        icon: "question",
+        showDenyButton: true,
+        showCancelButton: true,
+        denyButtonColor: "#f44b03",
+        confirmButtonText: "Tarjeta",
+        denyButtonText: "Efectivo",
+        cancelButtonText: "Cancelar",
       });
-
-      const resultTypePayment = window.confirm(
-        "¿Pago con tarjeta pulsa ACEPTAR con efectivo pulsa CANCELAR?"
-      );
-
-      const paymentData = {
-        table: id,
-        totalPayment: totalPayment.toFixed(2),
-        typePayment: resultTypePayment ? "CARD" : "CASH",
-        statusPayment: "PENDING",
-      };
-      const payment = await createPayment(paymentData);
-      for await (const order of orders) {
-        await addPaymentToOrder(order.id, payment.id);
+      if (alert.isConfirmed) {
+        Swal.fire("Listo!", "Usted ha seleccionado Tarjeta", "success");
+        onCreatePayment("CARD");
+        onReloadOrders();
+      } else if (alert.isDenied) {
+        Swal.fire("Listo!", "Usted ha seleccionado Efectivo", "success");
+        onCreatePayment("CASH");
+        onReloadOrders();
       }
-      onReloadOrders();
+    } catch (error) {
+      console.log(error);
+      return false;
     }
   };
 
@@ -69,8 +87,10 @@ export function TableDetailsAdmin() {
         title={`Mesa ${table?.number || ""}`}
         btnTitle={paymentData ? "Ver Cuenta" : "Añadir pedido"}
         btnClick={openCloseModal}
-        btnTitleTwo={!paymentData ? "Generar Cuenta" : null}
-        btnClickTwo={onCreatePayment}
+        btnTitleTwo={
+          !paymentData & (size(orders) > 0) ? "Generar Cuenta" : null
+        }
+        btnClickTwo={onPayment}
       />
       {loading ? (
         <Loader active inline="centered">

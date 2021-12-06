@@ -2,11 +2,14 @@ import React from "react";
 import { Table, Button, Icon } from "semantic-ui-react";
 import { usePayment, useOrder } from "../../../../hooks";
 import "./PaymentDetail.scss";
+import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export function PaymentDetail(props) {
   const { payment, orders, openCloseModal, onReloadOrders } = props;
   const { closePayment } = usePayment();
   const { closeOrder } = useOrder();
+  const history = useHistory();
 
   const getIconPayment = (key) => {
     if (key === "CARD") return "credit card outline";
@@ -15,15 +18,20 @@ export function PaymentDetail(props) {
   };
 
   const onCloseTable = async () => {
-    const result = window.confirm("¿Cerrar mesa para nuevos clientes?");
-    if (result) {
-      await closePayment(payment.id);
-      for await (const order of orders) {
-        await closeOrder(order.id);
-      }
-      onReloadOrders();
-      openCloseModal();
+    await closePayment(payment.id);
+    for await (const order of orders) {
+      await closeOrder(order.id);
     }
+    onReloadOrders();
+    openCloseModal();
+    await Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Tu operación ha sido guardado.",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+    history.push("/admin/payments-history");
   };
 
   return (

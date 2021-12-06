@@ -9,7 +9,7 @@ import "./OrderItemAdmin.scss";
 
 export function OrderItemAdmin(props) {
   const { order, onReloadOrders } = props;
-  const { title, image } = order.product_data;
+  const { title, image } = order?.product_data || "";
   const { checkDeliveredOrder } = useOrder();
 
   const onCheckDeliveredOrder = async () => {
@@ -32,10 +32,16 @@ export function OrderItemAdmin(props) {
         <Image src={image} />
         <p>{title}</p>
       </div>
-      {order.status === ORDER_STATUS.PENDING && (
-        <Button primary onClick={onCheckDeliveredOrder}>
+      {order.status === ORDER_STATUS.PENDING ? (
+        <Button
+          primary
+          onClick={onCheckDeliveredOrder}
+          className="animate__animated animate__heartBeat"
+        >
           Marcar Entregado
         </Button>
+      ) : (
+        <div className="ui green message">Pedido Entregado</div>
       )}
     </div>
   );
