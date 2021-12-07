@@ -1,10 +1,20 @@
-import React from "react";
-import "./Home.scss";
+import React, { useEffect } from "react";
+import { useCategory } from "../../../hooks";
+import { ServicesPage } from "../../../components/Home";
 
 export function Services() {
+  const { loading, categories, getCategories } = useCategory();
+  useEffect(() => getCategories(), []); // eslint-disable-line
+
   return (
-    <div>
-      <h1>SERVICIOS</h1>
-    </div>
+    <>
+      {loading ? (
+        <p className="loader">Cargando...</p>
+      ) : (
+        <>
+          <ServicesPage categories={categories} />
+        </>
+      )}
+    </>
   );
 }

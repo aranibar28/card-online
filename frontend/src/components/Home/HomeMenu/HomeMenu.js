@@ -9,9 +9,9 @@ export function HomeMenu(props) {
   const { pathname } = useLocation();
 
   return (
-    <div className="home-menu">
+    <div className="home-client">
       <Home pathname={pathname} />
-      <div className="content">{children} </div>
+      <div className="content">{children}</div>
     </div>
   );
 }
