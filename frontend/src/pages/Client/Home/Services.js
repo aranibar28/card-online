@@ -1,10 +1,10 @@
 import React from "react";
 import "./Home.scss";
 
-export function Home() {
+export function Services() {
   return (
     <div>
-      <h1>INICIO</h1>
+      <h1>SERVICIOS</h1>
     </div>
   );
 }

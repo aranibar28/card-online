@@ -1,13 +1,13 @@
 import React from "react";
-import { Container } from "semantic-ui-react";
-import "./HomeLayout.scss";
+import { HomeMenu } from "../../components/Home/HomeMenu";
 
 export function HomeLayout(props) {
   const { children } = props;
+
   return (
-    <Container>
-      <h1>HomeLayout</h1>
-      <div className="client-layout__content">{children}</div>
-    </Container>
+    <div className="home-layout">
+      <HomeMenu>{children}</HomeMenu>
+      <div>HOLA</div>
+    </div>
   );
 }

@@ -1,6 +1,5 @@
-import { HomeLayout, ClientLayout, BasicLayout } from "../layouts";
+import { ClientLayout, BasicLayout } from "../layouts";
 import {
-  Home,
   SelectTable,
   Categories,
   Products,
@@ -9,12 +8,6 @@ import {
 } from "../pages/Client";
 
 const routesClient = [
-  {
-    path: "/",
-    layout: HomeLayout,
-    component: Home,
-    exact: true,
-  },
   {
     path: "/client",
     layout: BasicLayout,

@@ -1,10 +1,10 @@
 import React from "react";
 import "./Home.scss";
 
-export function Home() {
+export function About() {
   return (
     <div>
-      <h1>INICIO</h1>
+      <h1>SOBRE NOSOTROS</h1>
     </div>
   );
 }

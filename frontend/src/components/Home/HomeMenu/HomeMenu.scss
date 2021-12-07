@@ -1,0 +1,15 @@
+.home-menu {
+  height: 100vh;
+  text-align: center;
+  background-color: #f3f2f3;
+
+  .navigation {
+    margin: 0 !important;
+    padding: 20px 0;
+    border-radius: 0;
+
+    img {
+      width: 120px;
+    }
+  }
+}
