@@ -1,4 +1,4 @@
-.home-section {
+.services {
   .carousel {
     position: relative;
 
@@ -19,9 +19,21 @@
     }
 
     img {
-      width: 960px;
-      height: 500px;
+      width: 600px;
+      height: 360;
       object-fit: cover;
+    }
+
+    .category-title {
+      position: absolute;
+      top: 100px;
+      margin-left: 50px;
+      font-size: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      z-index: 99;
+      color: aliceblue;
+      -webkit-text-stroke: 2px black;
     }
   }
 }

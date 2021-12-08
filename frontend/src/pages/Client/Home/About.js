@@ -1,9 +1,6 @@
 import React from "react";
+import { HomeAbout } from "../../../components/Home";
 
 export function About() {
-  return (
-    <div>
-      <h1>SOBRE NOSOTROS</h1>
-    </div>
-  );
+  return <HomeAbout />;
 }

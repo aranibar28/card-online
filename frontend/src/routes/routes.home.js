@@ -1,22 +1,22 @@
-import { HomeMenu } from "../components/Home/HomeMenu";
+import { HomeLayout } from "../layouts/HomeLayout";
 import { Home, About, Services } from "../pages/Client";
 
 const routesClient = [
   {
     path: "/",
-    layout: HomeMenu,
+    layout: HomeLayout,
     component: Home,
     exact: true,
   },
   {
     path: "/about",
-    layout: HomeMenu,
+    layout: HomeLayout,
     component: About,
     exact: true,
   },
   {
     path: "/services",
-    layout: HomeMenu,
+    layout: HomeLayout,
     component: Services,
     exact: true,
   },
