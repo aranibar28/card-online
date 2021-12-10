@@ -1,7 +1,5 @@
 .services {
   .carousel {
-    position: relative;
-
     .rec.rec-arrow {
       background-color: aliceblue;
       color: black;
@@ -9,31 +7,34 @@
     }
 
     .rec.rec-arrow-right {
-      position: absolute;
       right: 60px;
     }
 
     .rec.rec-arrow-left {
-      position: absolute;
       left: 60px;
     }
 
     img {
-      width: 600px;
-      height: 360;
+      width: 300px !important;
+      height: 240px !important;
       object-fit: cover;
+      border-radius: 5px 5px 0 0;
     }
 
     .category-title {
-      position: absolute;
-      top: 100px;
-      margin-left: 50px;
-      font-size: 50px;
-      font-weight: bold;
+      padding: 5px;
+      text-align: center;
       text-transform: uppercase;
-      z-index: 99;
-      color: aliceblue;
-      -webkit-text-stroke: 2px black;
+      font-weight: bold;
+      border: 1px solid #ccc;
+      border-radius: 0 0 5px 5px;
+    }
+  }
+
+  &__item {
+    cursor: pointer;
+    &:hover {
+      color: #f44b03;
     }
   }
 }

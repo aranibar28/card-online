@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useCategory } from "../../../hooks";
-import { HomeServices } from "../../../components/Home";
+import { HomeCategories } from "../../../components/Home";
 
-export function Services() {
+export function Categories() {
   const { categories, getCategories } = useCategory();
   useEffect(() => getCategories(), []); // eslint-disable-line
 
-  return <HomeServices categories={categories} />;
+  return <HomeCategories categories={categories} />;
 }

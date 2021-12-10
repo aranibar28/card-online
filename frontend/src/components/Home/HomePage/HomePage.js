@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Container, Grid, Image, Button, Icon } from "semantic-ui-react";
 import banner from "../../../assets/banner-center.png";
 import "./HomePage.scss";
@@ -33,7 +34,9 @@ export function HomePage() {
             Si le da pereza llamar al mesero <br />
             con un click te hacemos caso!
           </p>
-          <Button primary>Ver Carta</Button>
+          <Button primary as={Link} to="./client">
+            Ver Carta
+          </Button>
         </Grid.Column>
         <Grid.Column className="animate__animated animate__rotateIn">
           <Image fluid src={banner} />
@@ -41,10 +44,7 @@ export function HomePage() {
         <Grid.Column>
           {services.map((item, i) => {
             return (
-              <div
-                className="grid-container__services-box animate__animated animate__flipInX"
-                key={i}
-              >
+              <div className="items animate__animated animate__flipInX" key={i}>
                 <div>
                   <Icon name={item.icon} />
                 </div>

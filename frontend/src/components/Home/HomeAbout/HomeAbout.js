@@ -1,39 +1,62 @@
 import React from "react";
-import { Segment, Grid, Header, Image, Button } from "semantic-ui-react";
+import { Segment, Grid } from "semantic-ui-react";
 
 export function HomeAbout() {
   return (
-    <Segment vertical className="animate__animated animate__zoomIn">
-      <Grid container stackable verticalAlign="middle">
-        <Grid.Row>
-          <Grid.Column width={8}>
-            <Header as="h2" style={{ fontSize: "2em" }}>
-              We Help Companies and Companions
-            </Header>
-            <p style={{ fontSize: "1.33em" }}>
-              We can give your company superpowers to do things that they never
-              thought possible. Let us delight your customers and empower your
-              needs... through pure data analytics.
-            </p>
-            <Header as="h2" style={{ fontSize: "2em" }}>
-              We Make Bananas That Can Dance
-            </Header>
-            <p style={{ fontSize: "1.33em" }}>
-              Yes that's right, you thought it was the stuff of dreams, but even
-              bananas can be bioengineered.
+    <Segment vertical textAlign="center" className="animate__animated animate__zoomIn">
+      <h3>ACERCA DE NOSOTROS</h3>
+      <Grid divided="vertically" stackable>
+        <Grid.Row columns={2}>
+          <Grid.Column>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+              doloribus omnis delectus fugit vitae expedita possimus sapiente
+              voluptate, dolores odit quisquam similique atque at minus rerum
+              debitis recusandae! Explicabo, facere! Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Dicta doloribus omnis delectus fugit
+              vitae expedita possimus sapiente voluptate, dolores odit quisquam
+              similique atque at minus rerum debitis recusandae! Explicabo,
+              facere!
             </p>
           </Grid.Column>
-          <Grid.Column floated="right" width={5}>
-            <Image
-              bordered
-              rounded
-              src="https://react.semantic-ui.com/images/wireframe/white-image.png"
-            />
+          <Grid.Column>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+              doloribus omnis delectus fugit vitae expedita possimus sapiente
+              voluptate, dolores odit quisquam similique atque at minus rerum
+              debitis recusandae! Explicabo, facere! Lorem ipsum dolor sit amet
+              consectetur adipisicing elit. Dicta doloribus omnis delectus fugit
+              vitae expedita possimus sapiente voluptate, dolores odit quisquam
+              similique atque at minus rerum debitis recusandae! Explicabo,
+              facere!
+            </p>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row>
-          <Grid.Column textAlign="center">
-            <Button size="huge">Check Them Out</Button>
+
+        <Grid.Row columns={3}>
+          <Grid.Column>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+              doloribus omnis delectus fugit vitae expedita possimus sapiente
+              voluptate, dolores odit quisquam similique atque at minus rerum
+              debitis recusandae! Explicabo, facere!
+            </p>
+          </Grid.Column>
+          <Grid.Column>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+              doloribus omnis delectus fugit vitae expedita possimus sapiente
+              voluptate, dolores odit quisquam similique atque at minus rerum
+              debitis recusandae! Explicabo, facere!
+            </p>
+          </Grid.Column>
+          <Grid.Column>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
+              doloribus omnis delectus fugit vitae expedita possimus sapiente
+              voluptate, dolores odit quisquam similique atque at minus rerum
+              debitis recusandae! Explicabo, facere!
+            </p>
           </Grid.Column>
         </Grid.Row>
       </Grid>

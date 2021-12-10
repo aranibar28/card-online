@@ -27,7 +27,7 @@ export function ListProducts(props) {
   const { products } = props;
   return (
     <div className="list-products-client">
-      {map(products, (product) => (
+      {map(products, (product) => product.active &&(
         <div key={product.id} className="list-products-client__product">
           <div className="list-products-client__product-title">
             <h4>{product.title}</h4>
