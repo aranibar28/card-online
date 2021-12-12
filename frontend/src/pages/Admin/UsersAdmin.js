@@ -7,8 +7,8 @@ import {
 } from "../../components/Admin";
 import { ModalBasic } from "../../components/Common";
 import { useUser, useAuth } from "../../hooks";
-import Swal from "sweetalert2";
 import { Error403 } from "../Error403";
+import Swal from "sweetalert2";
 
 export function UsersAdmin() {
   const [showModal, setShowModal] = useState(false);

@@ -1,34 +1,31 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import { Container, Image, Item } from "semantic-ui-react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import { map } from "lodash";
-import Carousel from "react-elastic-carousel";
 import "./HomeCategories.scss";
+
+const responsive = {
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+    slidesToSlide: 3, // optional, default to 1.
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+    slidesToSlide: 2, // optional, default to 1.
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+    slidesToSlide: 1, // optional, default to 1.
+  },
+};
 
 export function HomeCategories(props) {
   const { categories } = props;
-  const carouselRef = useRef(null);
-
-  const onNextStart = (currentItem, nextItem) => {
-    if (currentItem.index === nextItem.index) {
-      carouselRef.current.goTo(0);
-    }
-  };
-
-  const onPrevStart = (currentItem, nextItem) => {
-    if (currentItem.index === nextItem.index) {
-      carouselRef.current.goTo(categories.length);
-    }
-  };
-
-  const Loop = (currentItem) => {
-    if (currentItem.index === categories.length - 1) {
-      setTimeout(() => {
-        carouselRef.current?.goTo(0);
-      }, 1500);
-    }
-  };
-
   const location = useLocation();
   const history = useHistory();
   const goToCategory = (id) => {
@@ -36,31 +33,20 @@ export function HomeCategories(props) {
   };
 
   return (
-    <Container className="services animate__animated animate__zoomIn">
-      <div>
-        <h2> </h2>
-      </div>
+    <Container>
       <Carousel
-        ref={carouselRef}
-        onChange={Loop}
-        onPrevStart={onPrevStart}
-        onNextStart={onNextStart}
-        enableAutoPlay
-        autoPlaySpeed={5000}
-        disableArrowsOnEnd={false}
-        itemsToShow={3}
-        showArrows={false}
-        enableMouseSwipe={true}
+        responsive={responsive}
+        autoPlay={true}
+        infinite={true}
         className="carousel"
       >
         {map(categories, (category) => (
-          <Item
-            key={category.id}
-            className="services__item"
-            onClick={() => goToCategory(category.id)}
-          >
-            <Image src={category.image} />
-            <div className="category-title">{category.title}</div>
+          <Item key={category.id}>
+            <Image
+              src={category.image}
+              onClick={() => goToCategory(category.id)}
+            />
+            <div className="carousel__title">{category.title}</div>
           </Item>
         ))}
       </Carousel>

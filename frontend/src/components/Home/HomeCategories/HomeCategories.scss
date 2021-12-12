@@ -1,40 +1,23 @@
-.services {
-  .carousel {
-    .rec.rec-arrow {
-      background-color: aliceblue;
-      color: black;
-      z-index: 2;
-    }
+.carousel {
+  .item {
+  }
 
-    .rec.rec-arrow-right {
-      right: 60px;
-    }
-
-    .rec.rec-arrow-left {
-      left: 60px;
-    }
-
-    img {
-      width: 300px !important;
-      height: 240px !important;
-      object-fit: cover;
-      border-radius: 5px 5px 0 0;
-    }
-
-    .category-title {
-      padding: 5px;
-      text-align: center;
-      text-transform: uppercase;
-      font-weight: bold;
-      border: 1px solid #ccc;
-      border-radius: 0 0 5px 5px;
+  img {
+    margin: 0 auto;
+    width: 300px !important;
+    height: 240px !important;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      filter: brightness(0.8);
     }
   }
 
-  &__item {
-    cursor: pointer;
-    &:hover {
-      color: #f44b03;
-    }
+  &__title {
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
   }
 }

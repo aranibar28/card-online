@@ -10,18 +10,18 @@ import Swal from "sweetalert2";
 
 export function AddEditProductForm(props) {
   const { onClose, onRefetch, product } = props;
-  const [categoriesFormat, setCategoriesFormat] = useState([]);
-  const [previewImage, setPreviewImage] = useState(
-    product ? product?.image : null
-  );
   const { categories, getCategories } = useCategory();
   const { addProduct, updateProduct } = useProduct();
+  const [categoriesFormat, setCategoriesFormat] = useState([]);
+  const [disabled, setDisabled] = useState(false);
+  const [previewImage, setPreviewImage] = useState(product?.image || null);
 
   const formik = useFormik({
     initialValues: initialValues(product),
     validationSchema: Yup.object(product ? updateSchema() : newSchema()),
     validateOnChange: false,
     onSubmit: async (formValue) => {
+      setDisabled(true);
       if (product) await updateProduct(product.id, formValue);
       else await addProduct(formValue);
       onRefetch();
@@ -31,7 +31,7 @@ export function AddEditProductForm(props) {
   });
 
   useEffect(() => getCategories(), []); // eslint-disable-line
-  
+
   useEffect(() => {
     setCategoriesFormat(formatDropdownData(categories));
   }, [categories]);
@@ -102,6 +102,7 @@ export function AddEditProductForm(props) {
       <input {...getInputProps()} />
       <Image src={previewImage} />
       <Button
+        disabled={disabled}
         type="submit"
         primary
         fluid

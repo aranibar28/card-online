@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button, Checkbox } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -9,12 +9,14 @@ import Swal from "sweetalert2";
 export function AddEditUserForm(props) {
   const { onClose, onRefetch, user } = props;
   const { addUser, updateUser } = useUser();
+  const [disabled, setDisabled] = useState(false);
 
   const formik = useFormik({
     initialValues: initialValues(user),
     validationSchema: Yup.object(user ? updateSchema() : newSchema()),
     validateOnChange: false,
     onSubmit: async (formValue) => {
+      setDisabled(true);
       try {
         if (user) await updateUser(user.id, formValue);
         else await addUser(formValue);
@@ -84,6 +86,7 @@ export function AddEditUserForm(props) {
         Usuario administrador
       </div>
       <Button
+        disabled={disabled}
         type="submit"
         primary
         fluid

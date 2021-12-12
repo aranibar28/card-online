@@ -10,11 +10,11 @@ export function AddOrderForm(props) {
   const { idTable, openCloseModal, onReloadOrders } = props;
   const [productsFormat, setProductsFormat] = useState([]);
   const [productsData, setProductsData] = useState([]);
+  const [disabled, setDisabled] = useState(false);
   const { products, getProducts, getProductById } = useProduct();
   const { addOrderToTable } = useOrder();
 
   useEffect(() => getProducts(), []); // eslint-disable-line
-
   useEffect(() => setProductsFormat(formatDropdownData(products)), [products]);
 
   const formik = useFormik({
@@ -23,6 +23,7 @@ export function AddOrderForm(props) {
     validateOnChange: false,
     onSubmit: async (formValue) => {
       for await (const idProduct of formValue.products) {
+        setDisabled(true);
         await addOrderToTable(idTable, idProduct);
       }
       onReloadOrders();
@@ -88,6 +89,7 @@ export function AddOrderForm(props) {
           ))}
         </div>
         <Button
+          disabled={disabled}
           type="submit"
           primary
           fluid

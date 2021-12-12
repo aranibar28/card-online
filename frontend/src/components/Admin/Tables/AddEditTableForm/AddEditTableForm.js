@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -7,6 +7,7 @@ import "./AddEditTableForm.scss";
 import Swal from "sweetalert2";
 
 export function AddEditTableForm(props) {
+  const [disabled, setDisabled] = useState(false);
   const { onClose, onRefetch, table } = props;
   const { addTable, updateTable } = useTable();
 
@@ -15,6 +16,7 @@ export function AddEditTableForm(props) {
     validationSchema: Yup.object(validationSchema()),
     validateOnChange: false,
     onSubmit: async (formValue) => {
+      setDisabled(true);
       if (table) await updateTable(table.id, formValue);
       else await addTable(formValue);
       onRefetch();
@@ -22,6 +24,7 @@ export function AddEditTableForm(props) {
       Swal.fire("Completado!", "Se guardaron los cambios", "success");
     },
   });
+  
   return (
     <Form className="add-edit-table form" onSubmit={formik.handleSubmit}>
       <Form.Input
@@ -33,6 +36,7 @@ export function AddEditTableForm(props) {
         error={formik.errors.number}
       />
       <Button
+        disabled={disabled}
         type="submit"
         primary
         fluid

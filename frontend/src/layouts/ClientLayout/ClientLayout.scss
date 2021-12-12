@@ -21,6 +21,17 @@
     justify-content: space-between;
     margin-bottom: 20px;
 
+    .ui.button {
+      span {
+        top: 0;
+        right: 10px;
+        z-index: 99;
+        font-size: 1.2rem !important;
+        border-radius: 100%;
+        color: red;
+      }
+    }
+
     .image {
       width: 100px;
     }

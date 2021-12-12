@@ -9,7 +9,7 @@ import {
   Politics,
   Terms,
   Location,
-} from "../pages/Client";
+} from "../pages/Client/Home";
 
 const routesClient = [
   {

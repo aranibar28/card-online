@@ -32,7 +32,11 @@ export function ClientLayout(props) {
         cancelButtonText: "NO",
       });
       if (alert.isConfirmed) {
-        await Swal.fire("Nos vemos!", "Esperamos verte pronto. Gracias.", "success");
+        await Swal.fire(
+          "Nos vemos!",
+          "Esperamos verte pronto. Gracias.",
+          "success"
+        );
         history.push("/");
       }
     } catch (error) {
@@ -49,6 +53,8 @@ export function ClientLayout(props) {
     history.push(`/client/${tableNumber}/orders`);
   };
 
+  // const cantProducts = JSON.parse(localStorage?.productsCart).length;
+
   return (
     <div className="client-layout-bg">
       <Container className="client-layout">
@@ -59,6 +65,8 @@ export function ClientLayout(props) {
           <span>Mesa {tableNumber}</span>
           <div>
             <Button icon onClick={goToCart}>
+              <span>{/* {cantProducts} */}</span>{" "}
+              {/* <- CONTADOR DE PRODUCTOS */}
               <Icon name="shop" />
             </Button>
             <Button icon onClick={goToOrder}>

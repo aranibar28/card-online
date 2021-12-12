@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Table, Button, Icon } from "semantic-ui-react";
 import { usePayment, useOrder } from "../../../../hooks";
 import "./PaymentDetail.scss";
@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
 export function PaymentDetail(props) {
+  const [disabled, setDisabled] = useState(false);
   const { payment, orders, openCloseModal, onReloadOrders } = props;
   const { closePayment } = usePayment();
   const { closeOrder } = useOrder();
@@ -18,6 +19,7 @@ export function PaymentDetail(props) {
   };
 
   const onCloseTable = async () => {
+    setDisabled(true);
     await closePayment(payment.id);
     for await (const order of orders) {
       await closeOrder(order.id);
@@ -54,7 +56,7 @@ export function PaymentDetail(props) {
           </Table.Row>
         </Table.Body>
       </Table>
-      <Button primary fluid onClick={onCloseTable}>
+      <Button disabled={disabled} primary fluid onClick={onCloseTable}>
         Marcar como Pagado y cerrar Mesa
       </Button>
     </div>

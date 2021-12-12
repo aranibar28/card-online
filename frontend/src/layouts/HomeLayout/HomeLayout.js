@@ -97,7 +97,7 @@ const NavBarDesktop = (props) => {
           <Menu.Item
             {...item}
             as={Link}
-            to={item.key}
+            to={"../" + item.key}
             active={pathname === "/" + item.key}
           />
         ))}

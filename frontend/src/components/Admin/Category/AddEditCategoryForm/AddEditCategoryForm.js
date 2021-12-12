@@ -9,14 +9,16 @@ import Swal from "sweetalert2";
 
 export function AddEditCategoryForm(props) {
   const { onClose, onRefetch, category } = props;
-  const [previewImage, setPreviewImage] = useState(category?.image || null);
   const { addCategory, updateCategory } = useCategory();
+  const [disabled, setDisabled] = useState(false);
+  const [previewImage, setPreviewImage] = useState(category?.image || null);
 
   const formik = useFormik({
     initialValues: initialValues(category),
     validationSchema: Yup.object(category ? updateSchema() : newSchema()),
     validateOnChange: false,
     onSubmit: async (formValue) => {
+      setDisabled(true);
       try {
         if (category) await updateCategory(category.id, formValue);
         else await addCategory(formValue);
@@ -62,6 +64,7 @@ export function AddEditCategoryForm(props) {
       <input {...getInputProps()} />
       <Image src={previewImage} fluid />
       <Button
+        disabled={disabled}
         type="submit"
         primary
         fluid
