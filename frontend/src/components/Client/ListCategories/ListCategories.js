@@ -12,7 +12,7 @@ export function ListCategories(props) {
   const goToCategory = (id) => {
     history.push(`${location.pathname}/${id}`);
   };
-  
+
   return (
     <div className="list-categories-client">
       {map(categories, (category) => (
