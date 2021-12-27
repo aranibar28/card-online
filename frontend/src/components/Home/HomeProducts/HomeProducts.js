@@ -9,10 +9,15 @@ export function HomeProducts(props) {
     <Grid columns={4} textAlign="center" stackable className="home-products">
       {map(products, (product) => (
         <Grid.Column key={product.id}>
-          <Image src={product.image} />
+          <div className="home-products__figure">
+            <Image src={product.image} />
+            <div className="container">
+              <span>S/. {parseFloat(product.price).toFixed()}</span>
+              <p>Antes S/. {(parseFloat(product.price) * 1.1).toFixed()}</p>
+            </div>
+          </div>
           <h4>{product.title}</h4>
           <p>{product.description}</p>
-          <span>S/. {product.price}</span>
         </Grid.Column>
       ))}
     </Grid>

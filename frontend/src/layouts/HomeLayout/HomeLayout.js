@@ -30,7 +30,7 @@ const NavBarMobile = (props) => {
         as={Menu}
         animation="overlay"
         icon="labeled"
-        inverted
+      
         vertical
         width="thin"
         visible={visible}
@@ -49,7 +49,7 @@ const NavBarMobile = (props) => {
         onClick={onPusherClick}
         style={{ minHeight: "100vh" }}
       >
-        <Menu inverted className="menu-home">
+        <Menu className="menu-home">
           <Menu.Item header as={Link} to="/">
             <Image size="mini" src={logo_min} />
           </Menu.Item>
@@ -78,7 +78,7 @@ const NavBarDesktop = (props) => {
   const { leftItems, rightItems } = props;
   const { pathname } = useLocation();
   return (
-    <Menu inverted className="menu-home">
+    <Menu className="menu-home">
       <Menu.Item as={Link} to="/">
         <Image src={logo} className="logo" />
       </Menu.Item>
@@ -156,7 +156,6 @@ const leftItems = [
 ];
 const rightItems = [
   { as: "a", content: "Clientes", key: "client" },
-  { as: "a", content: "Login", key: "admin" },
 ];
 
 export function HomeLayout(props) {
