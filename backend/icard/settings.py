@@ -154,4 +154,6 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=120)
 }
 
-
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
